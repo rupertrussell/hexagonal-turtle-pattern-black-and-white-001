@@ -3,7 +3,7 @@
 // Code by Rupert Russell 12 May 2018
 // as allways this may contain bugs and is not as elegant as it could be
 // licence https://choosealicense.com/licenses/mit/
-MIT License
+// MIT License
 
 Copyright (c)  2018 Rupert Russell
 
