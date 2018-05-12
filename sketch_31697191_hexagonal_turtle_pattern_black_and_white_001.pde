@@ -3,27 +3,27 @@
 // Code by Rupert Russell 12 May 2018
 // as allways this may contain bugs and is not as elegant as it could be
 // licence https://choosealicense.com/licenses/mit/
-// MIT License
+//MIT License
 
-Copyright (c)  2018 Rupert Russell
+//Copyright (c)  2018 Rupert Russell
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+//The above copyright notice and this permission notice shall be included in all
+//copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//SOFTWARE.
 
 float startX;
 float startY;
@@ -66,93 +66,93 @@ int widthOffset = 140;
 // Based on code from http://www.mathopenref.com/coordcirclealgorithm...
 
 void setup() {
-background(0); 
-strokeWeight(9); 
-size(4600, 3305); // width x height
-smooth();
-noLoop();
-strokeCap(ROUND);
+  background(0); 
+  strokeWeight(9); 
+  size(4600, 3305); // width x height
+  smooth();
+  noLoop();
+  strokeCap(ROUND);
 }
 
 void draw() {
-stroke(255);
-println("repeatXtimes = " + repeatXtimes);
-println("repeatYtimes = " + repeatYtimes);
-for (int i = 0; i <= repeatXtimes; i++) {
-if (isEven(i)) {
-stack(-50 + i * widthOffset, heightOffset, repeatYtimes );
-} else {
-stack(-50 + i * widthOffset, heightOffset + 80, repeatYtimes + 1);
-}
-}
+  stroke(255);
+  println("repeatXtimes = " + repeatXtimes);
+  println("repeatYtimes = " + repeatYtimes);
+  for (int i = 0; i <= repeatXtimes; i++) {
+    if (isEven(i)) {
+      stack(-50 + i * widthOffset, heightOffset, repeatYtimes );
+    } else {
+      stack(-50 + i * widthOffset, heightOffset + 80, repeatYtimes + 1);
+    }
+  }
 
-save("Phone-Laptop-Case.png");
-exit();
+  save("Phone-Laptop-Case.png");
+  exit();
 } // end draw
 
 void hexagon(int radius) {
-count = 0;
-start = true;
+  count = 0;
+  start = true;
 
-step = 2 * PI/6; 
-for (float theta=0; theta < 2 * PI; theta += step) {
-x = h + radius * cos(theta);
-y = k - radius * sin(theta); //note 2.
-// point(x, y);
+  step = 2 * PI/6; 
+  for (float theta=0; theta < 2 * PI; theta += step) {
+    x = h + radius * cos(theta);
+    y = k - radius * sin(theta); //note 2.
+    // point(x, y);
 
-if (start == true) {
-startX = x;
-startY = y;
-if (count != 0) {
-line(endX, endY, startX, startY);
-}
-}
+    if (start == true) {
+      startX = x;
+      startY = y;
+      if (count != 0) {
+        line(endX, endY, startX, startY);
+      }
+    }
 
-if (start == false) {
-endX = x;
-endY = y;
+    if (start == false) {
+      endX = x;
+      endY = y;
 
-line(startX, startY, endX, endY);
-}
-count ++;
-if (start == true) {
-start = false;
-} else {
-start = true;
-}
-} // end void hexagon
+      line(startX, startY, endX, endY);
+    }
+    count ++;
+    if (start == true) {
+      start = false;
+    } else {
+      start = true;
+    }
+  } // end void hexagon
 }
 
 void stack(float transX, float transY, int num) { 
-pushMatrix();
-translate(transX, transY);
-for (int i = 0; i < num; i++) {
-hex();
-translate(0, -yGap);
-}
-popMatrix();
+  pushMatrix();
+  translate(transX, transY);
+  for (int i = 0; i < num; i++) {
+    hex();
+    translate(0, -yGap);
+  }
+  popMatrix();
 } // end void stack
 
 void hex() {
 
-hexagon(5);
-hexagon(7);
-hexagon(10);
-hexagon(15);
-hexagon(20);
-hexagon(25);
-hexagon(30);
-hexagon(50);
+  hexagon(5);
+  hexagon(7);
+  hexagon(10);
+  hexagon(15);
+  hexagon(20);
+  hexagon(25);
+  hexagon(30);
+  hexagon(50);
 
-hexagon(70);
-// hexagon(90);
-// hexagon(90);
+  hexagon(70);
+  // hexagon(90);
+  // hexagon(90);
 } // end void hex
 
 boolean isEven(int n) {
-return n % 2 == 0;
+  return n % 2 == 0;
 }
 
 boolean isOdd(int n) {
-return n % 2 != 0;
+  return n % 2 != 0;
 }
